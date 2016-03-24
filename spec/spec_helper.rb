@@ -74,4 +74,8 @@ RSpec.configure do |config|
 
   config.fail_fast = ENV['FAIL_FAST'] || false
   config.order = "random"
+
+  config.filter_run :focus => true
+  config.run_all_when_everything_filtered = true
+
 end

@@ -25,5 +25,15 @@ end
 desc 'Generates a dummy app for testing'
 task :test_app do
   ENV['LIB_NAME'] = 'spree_product_zoom'
+  images_path = File.join(FileUtils.pwd, 'spec', 'products_images', '.')
+  dummy_path = File.join(FileUtils.pwd, 'spec', 'dummy', 'public', 'spree', 'products')
   Rake::Task['common:test_app'].invoke
+
+  puts "Copying product images..."
+  FileUtils.mkdir_p(dummy_path)
+  FileUtils.cp_r(images_path, dummy_path)
+
+  puts "Precompiling assets (again)..."
+  system("bundle exec rake assets:precompile > #{File::NULL}")
+
 end

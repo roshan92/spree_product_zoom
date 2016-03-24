@@ -14,6 +14,7 @@ feature "gallery", :js => true do
 
   scenario "product without options, two images" do
     attach_images(@product.master)
+    expect(@product.images.count).to eq(2)
 
     visit "/products/#{@product.id}"
 
