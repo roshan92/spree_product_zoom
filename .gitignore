@@ -13,3 +13,5 @@ Gemfile.lock
 /*.iml
 /.rakeTasks
 /.generators
+.ruby-gemset
+.ruby-version
