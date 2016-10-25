@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :product1, class: Spree::Product do
     name "Some Product"
     available_on { 1.year.ago }
-    shipping_category_id 1
+    shipping_category { |r| Spree::ShippingCategory.first || r.association(:shipping_category) }
     tax_category_id 1
     price 29.99
     sku 'p1v'
